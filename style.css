@@ -1,0 +1,193 @@
+.grid-container {
+  display: grid;
+  width: 95vmin;
+  height: 95vmin;
+  background-color: hsl(89, 39%, 59%);
+  grid-template-columns: 7.1vmin 80vmin 7.1vmin;
+  grid-template-rows: 7.2vmin 80vmin 7.2vmin;
+  gap: 0.3em 0.3em;
+  grid-template-areas:
+    "scoreboard scoreboard scoreboard"
+    "controls-left main-game controls-right"
+    "footer footer footer";
+}
+
+.scoreboard {
+  grid-area: scoreboard;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.controls-left { grid-area: controls-left; }
+
+.controls-right { grid-area: controls-right; }
+
+.footer { grid-area: footer; }
+
+.chessboard {
+  display: grid;
+  grid-template-columns: repeat(8, 12.5%);
+  grid-template-rows: repeat(8, 12.5%);
+  gap: 0px 0px;
+  grid-template-areas:
+    "A1 B1 C1 D1 E1 F1 G1 H1"
+    "A2 B2 C2 D2 E2 F2 G2 H2"
+    "A3 B3 C3 D3 E3 F3 G3 H3"
+    "A4 B4 C4 D4 E4 F4 G4 H4"
+    "A5 B5 C5 D5 E5 F5 G5 H5"
+    "A6 B6 C6 D6 E6 F6 G6 H6"
+    "A7 B7 C7 D7 E7 F7 G7 H7"
+    "A8 B8 C8 D8 E8 F8 G8 H8";
+  grid-area: main-game;
+    background-image: url("./quad-grid.svg");
+    background-size: 25%;
+    background-position:0 0
+}
+
+/*****
+ This is the bit that gets interesting.
+  I want to populate these from CSS, and
+  position them via css - but then, with
+  js, just changing the grid-area will move
+  the piece. Further, if I want to add an
+  animation, they would slide! I think. :D
+*/
+.chess-piece {
+  width: 100%; height: 100%;
+
+  background: url('./chess-pieces.png');
+  background-size: 60vmin;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+}
+.chess-piece.black{
+  background-position-y:29vmin;
+}
+.chess-piece.white{
+  background-position-y:0vmin;
+}
+.chess-piece.rook{
+  background-position-x: -160vmin;
+}
+.chess-piece.knight{
+  background-position-x: -150vmin;
+}
+.chess-piece.bishop{
+  background-position-x: -140vmin;
+}
+.chess-piece.queen{
+  background-position-x: -120vmin;
+}
+.chess-piece.king{
+  background-position-x: -130vmin;
+}
+.chess-piece.pawn{
+  background-position-x: -170vmin;
+}
+
+/* Positioning the pieces, by grid */
+/* Black pieces */
+.black.queens.rook {
+  grid-area: A7;
+}
+.black.queens.knight {
+  grid-area: B7;
+}
+.black.queens.bishop {
+  grid-area: C7;
+}
+.black.queen {
+  grid-area: D7;
+}
+.black.king {
+  grid-area: E7;
+}
+.black.kings.bishop {
+  grid-area: F7;
+}
+.black.kings.knight {
+  grid-area: G7;
+}
+.black.kings.rook {
+  grid-area: H7;
+}
+/* Black pawns */
+.black.pawn.p1 {
+  grid-area: A6;
+}
+.black.pawn.p2 {
+  grid-area: B6;
+}
+.black.pawn.p3 {
+  grid-area: C6;
+}
+.black.pawn.p4 {
+  grid-area: D6;
+}
+.black.pawn.p5 {
+  grid-area: E6;
+}
+.black.pawn.p6 {
+  grid-area: F6;
+}
+.black.pawn.p7 {
+  grid-area: G6;
+}
+.black.pawn.p8 {
+  grid-area: H6;
+}
+
+/* White side pieces */
+.white.queens.rook {
+  grid-area: A0;
+}
+.white.queens.knight {
+  grid-area: B0;
+}
+.white.queens.bishop {
+  grid-area: C0;
+}
+.white.queen {
+  grid-area: D0;
+}
+.white.king {
+  grid-area: E0;
+}
+.white.kings.bishop {
+  grid-area: F0;
+}
+.white.kings.knight {
+  grid-area: G0;
+}
+.white.kings.rook {
+  grid-area: H0;
+}
+/* Black pawns */
+.white.pawn.p1 {
+  grid-area: A1;
+}
+.white.pawn.p2 {
+  grid-area: B1;
+}
+.white.pawn.p3 {
+  grid-area: C1;
+}
+.white.pawn.p4 {
+  grid-area: D1;
+}
+.white.pawn.p5 {
+  grid-area: E1;
+}
+.white.pawn.p6 {
+  grid-area: F1;
+}
+.white.pawn.p7 {
+  grid-area: G1;
+}
+.white.pawn.p8 {
+  grid-area: H1;
+}
+.chess-piece.selected{
+  border: 1px solid hsl(10, 65%, 48%);
+}
